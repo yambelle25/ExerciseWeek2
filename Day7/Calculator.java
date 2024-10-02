@@ -1,11 +1,17 @@
 package Day7;
 
-import java.util.Scanner;  
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Calculator {  
     public static void main(String[] args) {  
         Scanner scanner = new Scanner (System.in);  
-        int choice;  
-        do {  
+        int choice = 0;  
+        
+        
+        do { 
+            
+            try{
             System.out.println("Menu:");  
             System.out.println("1. Addition");  
             System.out.println("2. Subtraction");  
@@ -14,6 +20,8 @@ public class Calculator {
             System.out.println("5. Exit");  
             System.out.print("Enter your choice: ");  
             choice = scanner.nextInt();  
+            
+            
             switch (choice) {  
                 case 1:  
                     System.out.print("Enter first number: ");  
@@ -52,9 +60,14 @@ public class Calculator {
                     break;  
                 default:  
                     System.out.println("Invalid choice. Please choose a valid option.");  
-            }  
+            }
+        }  
+            catch (InputMismatchException e){
+                System.out.println("Error. Please enter numbers only ");
+                scanner.next();
+            }
         } while (choice != 5);  
           
         scanner.close();  
     }  
-}  
+} 
